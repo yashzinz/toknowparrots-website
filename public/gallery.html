@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bird Gallery - KeshavTheBird</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Quicksand:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assests/css/gallery.css" />
+  </head>
+  <body>
+    <!-- Header/Navbar -->
+    <header class="navbar fade-in">
+      <div class="brand">
+        <img src="assests/images/KeshavTheBird.png" alt="Keshav Logo" />
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="gallery.html" class="active">The Aviary</a>
+        <a href="contact.html">Contact form</a>
+      </nav>
+      <div class="actions">
+        <button class="signup-btn">Sign Up</button>
+        <button class="login-btn">Log in</button>
+        <button class="logout-btn" style="display: none">Log Out</button>
+      </div>
+    </header>
+
+    <!-- Gallery Header -->
+    <div class="gallery-header">
+      <div class="gallery-title">Bird Gallery</div>
+      <div class="gallery-desc">
+        Meet the flock! See birds from our wonderful community and add your own.
+      </div>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Example card -->
+      <div class="gallery-card">
+        <img
+          class="gallery-img"
+          src="assests/images/fruit-bowl.jpg"
+          alt="Bird"
+        />
+        <div class="gallery-name">Sunny</div>
+        <div class="gallery-intro">
+          Loves apples and singing in the morning!
+        </div>
+        <div class="gallery-socials">
+          <a href="https://instagram.com/" target="_blank" title="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="https://twitter.com/" target="_blank" title="Twitter"
+            ><i class="fab fa-x-twitter"></i
+          ></a>
+        </div>
+      </div>
+      <!-- More cards will be added dynamically -->
+    </div>
+
+    <!-- Add Bird Button -->
+    <button class="add-bird-btn" id="addBirdBtn" title="Add Your Bird">
+      <i class="fas fa-plus"></i>
+    </button>
+
+    <!-- Popup Form -->
+    <div class="popup-overlay" id="popupOverlay">
+      <div class="popup">
+        <button class="popup-close" id="popupClose" title="Close">
+          &times;
+        </button>
+        <div class="popup-title">Add Your Bird</div>
+        <form class="popup-form" id="popupForm">
+          <label for="birdImage">Bird Image</label>
+          <input type="file" id="birdImage" accept="image/*" required />
+          <label for="birdName">Bird Name</label>
+          <input type="text" id="birdName" placeholder="e.g. Kiwi" required />
+          <label for="birdIntro">Intro</label>
+          <textarea
+            id="birdIntro"
+            rows="2"
+            placeholder="Tell us about your bird!"
+            required
+          ></textarea>
+          <label for="birdInstagram">Instagram</label>
+          <input
+            type="url"
+            id="birdInstagram"
+            placeholder="https://instagram.com/yourbird"
+          />
+          <label for="birdTwitter">Twitter/X</label>
+          <input
+            type="url"
+            id="birdTwitter"
+            placeholder="https://twitter.com/yourbird"
+          />
+          <button class="popup-btn" type="submit">Add to Gallery</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      &copy; 2025 KeshavTheBird &middot; Made with
+      <span style="color: #da856c">&#10084;</span> for parrot lovers
+    </footer>
+
+    <script>
+      document.querySelector(".signup-btn").onclick = () =>
+        (window.location.href = "signup.html");
+      document.querySelector(".login-btn").onclick = () =>
+        (window.location.href = "login.html");
+      const addBirdBtn = document.getElementById("addBirdBtn");
+      const popupOverlay = document.getElementById("popupOverlay");
+      const popupClose = document.getElementById("popupClose");
+      const popupForm = document.getElementById("popupForm");
+      const galleryGrid = document.getElementById("galleryGrid");
+
+      addBirdBtn.onclick = () => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user && (user.username || user.email)) {
+          popupOverlay.classList.add("active");
+        } else {
+          alert("Please log in or sign up to add your bird to the gallery!");
+          window.location.href = "login.html";
+        }
+      };
+      popupClose.onclick = () => popupOverlay.classList.remove("active");
+      popupOverlay.onclick = (e) => {
+        if (e.target === popupOverlay) popupOverlay.classList.remove("active");
+      };
+
+      popupForm.onsubmit = async function (e) {
+        e.preventDefault();
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (!user) {
+          alert("You must be logged in to add a parrot.");
+          return;
+        }
+        const fileInput = document.getElementById("birdImage");
+        const name = document.getElementById("birdName").value.trim();
+        const intro = document.getElementById("birdIntro").value.trim();
+        const instagram = document.getElementById("birdInstagram").value.trim();
+        const twitter = document.getElementById("birdTwitter").value.trim();
+
+        // Read image as base64 string
+        const file = fileInput.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = async function (event) {
+          const imageUrl = event.target.result;
+
+          const res = await fetch("http://localhost:5000/api/parrots", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name,
+              intro,
+              instagram,
+              twitter,
+              imageUrl,
+              addedBy: user.username || user.email,
+            }),
+          });
+          const data = await res.json();
+          if (res.ok) {
+            alert("Parrot added!");
+            window.location.reload();
+          } else {
+            alert(data.error || "Failed to add parrot.");
+          }
+        };
+        reader.readAsDataURL(file);
+      };
+      async function loadParrots() {
+        const galleryGrid = document.getElementById("galleryGrid");
+        // Clear existing cards
+        galleryGrid.innerHTML = "";
+
+        const res = await fetch("http://localhost:5000/api/parrots");
+        const parrots = await res.json();
+
+        parrots.forEach((parrot) => {
+          const card = document.createElement("div");
+          card.className = "gallery-card";
+          card.innerHTML = `
+      <img class="gallery-img" src="${parrot.imageUrl}" alt="${parrot.name}" />
+      <div class="gallery-name">${parrot.name}</div>
+      <div class="gallery-intro">${parrot.intro || ""}</div>
+      <div class="gallery-socials">
+        ${
+          parrot.instagram
+            ? `<a href="${parrot.instagram}" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>`
+            : ""
+        }
+        ${
+          parrot.twitter
+            ? `<a href="${parrot.twitter}" target="_blank" title="Twitter"><i class="fab fa-x-twitter"></i></a>`
+            : ""
+        }
+      </div>
+      <div class="gallery-addedby">Added by: <span>${
+        parrot.addedBy
+      }</span></div>
+    `;
+          galleryGrid.appendChild(card);
+        });
+      }
+
+      // Load parrots on page load
+      loadParrots();
+
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user && (user.username || user.email)) {
+        document
+          .querySelectorAll(".login-btn, .signup-btn")
+          .forEach((el) => (el.style.display = "none"));
+        const nav = document.querySelector("nav");
+        if (nav && !document.querySelector(".nav-username")) {
+          const userSpan = document.createElement("span");
+          userSpan.className = "nav-username";
+          userSpan.textContent = user.username || user.email.split("@")[0];
+          userSpan.style.marginLeft = "1em";
+          nav.appendChild(userSpan);
+        }
+        // Show logout button
+        const logoutBtn = document.querySelector(".logout-btn");
+        if (logoutBtn) logoutBtn.style.display = "inline-block";
+      }
+      // Logout functionality
+      const logoutBtn = document.querySelector(".logout-btn");
+      if (logoutBtn) {
+        logoutBtn.onclick = function () {
+          localStorage.removeItem("user");
+          window.location.reload();
+        };
+      }
+    </script>
+  </body>
+</html>

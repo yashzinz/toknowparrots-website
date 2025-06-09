@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>KeshavTheBird - Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assests/css/homepage.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="hero-bg">
+      <!----------------------- Header/Navbar ----------------------------->
+      <header class="navbar fade-in">
+        <div class="brand">
+          <img src="assests/images/KeshavTheBird.png" alt="Keshav Logo" />
+        </div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="gallery.html">The Aviary</a>
+          <a href="contact.html">Contact form</a>
+        </nav>
+        <div class="actions">
+          <button class="signup-btn">Sign Up</button>
+          <button class="login-btn">Log in</button>
+          <button class="logout-btn" style="display: none">Log Out</button>
+        </div>
+      </header>
+
+      <!-------------------------------Hero Section------------------------->
+      <section class="hero fade-in">
+        <div class="hero-content">
+          <!-- Left Content only -->
+          <div class="hero-left">
+            <h1 class="hero-title">Feathery Fun, Just a Click Away</h1>
+            <div class="hero-subtitle">
+              For the Love, Laughs, and Cuddles You Deserve
+            </div>
+            <p class="hero-desc">
+              Whether you're a bird lover, a fellow parrot parent, or just
+              curious about life with a chatty Amazon parrot—you’re in the right
+              place! I’m Keshav, an orange-winged Amazon with a big heart and an
+              even bigger appetite. From head scratches to hilarious antics and
+              snack-time adventures, there’s never a dull moment around here.<br />
+              Explore my world, discover my favorite moments, and maybe even
+              share a few of yours too!
+            </p>
+          </div>
+        </div>
+        <button id="talk-btn" class="talk-btn fade-in">Talk to Me!</button>
+      </section>
+    </div>
+
+    <!--------------------------- Steps Section ----------------------------------->
+    <section class="steps-section">
+      <h2 class="fade-in">Get to Know Me <br />In 3 Easy Flaps!</h2>
+      <div class="steps-grid">
+        <!-- Step 1 -->
+        <div
+          class="step-card fade-in fading"
+          data-fade-delay="0"
+          data-target="daily-life-section"
+        >
+          <div class="step-number">01</div>
+          <div class="step-image">
+            <img src="assests/images/food.jpg" alt="Peek Into My Daily Life" />
+          </div>
+          <div class="step-title">Peek Into My Daily Life</div>
+        </div>
+        <!-- Step 2 -->
+        <div
+          class="step-card fade-in fading"
+          data-fade-delay="200"
+          data-target="feathered-world"
+        >
+          <div class="step-number">02</div>
+          <div class="step-image">
+            <img
+              src="assests/images/friends.jpg"
+              alt="Meet My Feathered World"
+            />
+          </div>
+          <div class="step-title">Meet My Feathered World</div>
+        </div>
+        <!-- Step 3 -->
+        <div
+          class="step-card fade-in fading"
+          data-fade-delay="400"
+          data-target="keshav-journey"
+        >
+          <div class="step-number">03</div>
+          <div class="step-image">
+            <img src="assests/images/journey.jpg" alt="Follow My Journey" />
+          </div>
+          <div class="step-title">Follow My Journey</div>
+        </div>
+      </div>
+    </section>
+
+    <!---------------------------DAILY LIFE SECTION --------------------------------->
+
+    <section id="daily-life-section">
+      <h2 class="daily-life-title fade-in">Peek Into My Daily Life</h2>
+      <div class="daily-life-grid">
+        <!----------Shower Time-------------->
+        <div class="daily-life-card slide-in-left">
+          <div class="daily-life-icon"><i class="fas fa-shower"></i></div>
+          <div
+            class="daily-life-img"
+            data-video="https://res.cloudinary.com/dshvibybm/video/upload/v1749141343/ntqjlwtomky1bknoygvd.mp4"
+          >
+            <img src="assests/images/shower.jpg" alt="Shower or misting" />
+          </div>
+          <div class="daily-life-heading">Sprinkle & Sing</div>
+          <div class="daily-life-desc">
+            There's nothing better than a refreshing mist on my feathers while
+            grooving to some tunes. Yes, I love getting sprinkled or hopping
+            into the shower when the music is on. You'll find me flapping,
+            singing, and fluffing — it's my version of karaoke and spa day
+            rolled into one!
+          </div>
+        </div>
+        <!-------- Play & Enrichment------------->
+        <div class="daily-life-card slide-in-up">
+          <div class="daily-life-icon"><i class="fas fa-puzzle-piece"></i></div>
+          <div
+            class="daily-life-img"
+            data-video="https://res.cloudinary.com/dshvibybm/video/upload/v1749220833/VID_20250409_141513_j8bqud.mp4"
+          >
+            <img src="assests/images/play.jpg" alt="Bird playing with toys" />
+          </div>
+          <div class="daily-life-heading">Busy Beak, Happy Heart</div>
+          <div class="daily-life-desc">
+            I’m always up to something! My days are filled with chewable wood
+            toys, colorful ropes, puzzle feeders, shreddables, and even noisy
+            trinkets. Foraging toys challenge my brain, and climbing ropes keep
+            me acrobatic. Enrichment is how I stay smart, active, and out of
+            mischief!
+          </div>
+        </div>
+        <!-----------Breakfast & Treats---------------------->
+        <div class="daily-life-card slide-in-right">
+          <div class="daily-life-icon"><i class="fas fa-apple-alt"></i></div>
+          <div
+            class="daily-life-img"
+            data-video="https://res.cloudinary.com/dshvibybm/video/upload/v1749221251/VID_20250428_163254_fqp7fl.mp4"
+          >
+            <img
+              src="assests/images/fruit-bowl.jpg"
+              alt="Fruit bowl breakfast"
+            />
+          </div>
+          <div class="daily-life-heading">Fresh, Fruity Mornings</div>
+          <div class="daily-life-desc">
+            I start my day with a rainbow! My breakfast bowl is filled with
+            fresh veggies and fruits such as pomegranate, blueberries,
+            drumsticks, long beans, red chillies, dragon fruit, guava, apple,
+            oranges, strawberries, pears, mangoes, kusa, cluster beans, and beet
+            — all chopped just right. After that, I get some healthy pellets to
+            crunch on. Best part? I love earning my favorite bits through fun
+            tricks like recall!
+          </div>
+        </div>
+      </div>
+    </section>
+    <!----------------------KESHAV JOURNEY SECTION-------------------------->
+    <section id="keshav-journey" class="journey-section">
+      <h2 class="journey-title fade-in">Keshav’s Journey</h2>
+      <p class="journey-subtitle fade-in">
+        A heartfelt timeline of resilience, healing, and love.
+      </p>
+      <div class="journey-timeline">
+        <!-- 1 -->
+        <div class="journey-row left fade-in">
+          <div class="journey-card-image">
+            <img
+              src="assests/images/firstmeet.jpg"
+              alt="Keshav First Day Home"
+            />
+          </div>
+          <div class="journey-card-content">
+            <div class="journey-date">09-12-2022 – First Day Home</div>
+            <div class="journey-title-small">From Silence and Fear</div>
+            <div class="journey-desc">
+              Keshav entered our lives as a fragile 7-month-old baby bird from a
+              pet shop. He couldn’t fly, and his fear was heartbreaking —
+              screaming if anyone approached him. We didn’t know then that a
+              seed-only diet wasn’t ideal for him, and unknowingly, we began
+              with a lot of mistakes. Still, we hoped love would be enough.
+            </div>
+          </div>
+        </div>
+        <!-- 2 -->
+        <div class="journey-row right fade-in">
+          <div class="journey-card-content">
+            <div class="journey-date">23-12-2022 – A Sister’s Love</div>
+            <div class="journey-title-small">When Soham Arrived</div>
+            <div class="journey-desc">
+              Just weeks later, we brought home Soham — a gentle, cheerful girl
+              who was Keshav’s polar opposite. She quickly grew fond of us,
+              always eager to play and explore. Keshav, meanwhile, stayed
+              distant and reserved, often watching quietly from afar. But having
+              Soham nearby brought a new energy into the home — a hope that
+              maybe Keshav, too, would open up one day.
+            </div>
+          </div>
+          <div class="journey-card-image">
+            <img src="assests/images/soham.jpg" alt="Soham Arrived" />
+          </div>
+        </div>
+        <!-- 3 -->
+        <div class="journey-row left fade-in">
+          <div class="journey-card-image">
+            <img
+              src="assests/images/goodbye.jpg"
+              alt="Saying Goodbye to Soham"
+            />
+          </div>
+          <div class="journey-card-content">
+            <div class="journey-date">09-02-2023 – Saying Goodbye</div>
+            <div class="journey-title-small">A Sudden Loss</div>
+            <div class="journey-desc">
+              Tragedy struck unexpectedly — Soham fell ill and passed away
+              within hours at the vet. Her death was devastating. She had
+              brought so much joy in her short life. We buried her by a quiet
+              beach, where the sky stretched wide — a place where she could fly
+              forever free. Her loss made us realize how little we knew, and how
+              much we needed to change.
+            </div>
+          </div>
+        </div>
+        <!-- 4 -->
+        <div class="journey-row right fade-in">
+          <div class="journey-card-content">
+            <div class="journey-date">13-04-2023 – The First Connection</div>
+            <div class="journey-title-small">Trust, Slowly Gained</div>
+            <div class="journey-desc">
+              Motivated by Soham’s memory, we began transforming how we cared
+              for Keshav. We studied, consulted with vets, and began feeding
+              fresh fruits, vegetables, and sprouted grains. I sat with him
+              daily, softly talking, offering treats from a distance, and
+              playing music. One quiet morning, Keshav climbed onto my shoulder
+              and gently took a treat. That small gesture was a breakthrough —
+              the beginning of a deep, mutual trust.
+            </div>
+          </div>
+          <div class="journey-card-image">
+            <img
+              src="assests/images/firstconnection.jpg"
+              alt="The First Connection with Keshav"
+            />
+          </div>
+        </div>
+        <!-- 5 -->
+        <div class="journey-row left fade-in">
+          <div class="journey-card-image">
+            <img
+              src="assests/images/firstflight.jpg"
+              alt="Keshav First Flight"
+            />
+          </div>
+          <div class="journey-card-content">
+            <div class="journey-date">23-07-2023 – First Flight</div>
+            <div class="journey-title-small">Wings Unfold</div>
+            <div class="journey-desc">
+              Months of patience, love, and a proper diet finally bore fruit —
+              Keshav’s flight feathers regrew. And then, it happened: he took
+              his very first full flight around our home. It was beautiful and
+              indescribable. He had endured fear, trauma, and loss — but in that
+              moment, he was truly free. His feathers grew vibrant, and with
+              each flap, so did his confidence.
+            </div>
+          </div>
+        </div>
+        <!-- 6 -->
+        <div class="journey-row right fade-in">
+          <div class="journey-card-content">
+            <div class="journey-date">11-08-2023 – Shower Time Joy</div>
+            <div class="journey-title-small">Music, Mist, and Happiness</div>
+            <div class="journey-desc">
+              For the first time, Keshav genuinely enjoyed being showered. We
+              misted him gently with a plant bottle while soft music played, and
+              he fluffed up, danced, and flapped joyfully. It became our weekly
+              ritual — his happy showers, always paired with music. It’s one of
+              his favorite activities now, and ours too.
+            </div>
+          </div>
+          <div class="journey-card-image">
+            <img src="assests/images/shower.jpg" alt="Keshav Shower Time Joy" />
+          </div>
+        </div>
+        <!-- 7 -->
+        <div class="journey-row left fade-in">
+          <div class="journey-card-image">
+            <img
+              src="assests/images/scrollingtab.jpg"
+              alt="Keshav Training and Entertainment"
+            />
+          </div>
+          <div class="journey-card-content">
+            <div class="journey-date">28-04-2024 – A Bright Mind</div>
+            <div class="journey-title-small">Entertainment & Training</div>
+            <div class="journey-desc">
+              We discovered Keshav’s love for watching Amazon parrots on YouTube
+              and parrot videos on his little tablet. He’d watch with curiosity
+              and sometimes even chirp back. Around this time, we also began
+              formal training — starting with “step-up” using a stick, and then
+              moving to recall training. Today, he flies to my hand when called,
+              eager for his favorite treat and a cuddle.
+            </div>
+          </div>
+        </div>
+        <!-- 8 -->
+        <div class="journey-row right fade-in">
+          <div class="journey-card-content">
+            <div class="journey-date">26-06-2024 – The World Outside</div>
+            <div class="journey-title-small">Tiny Steps Toward Adventures</div>
+            <div class="journey-desc">
+              Wanting to take him on safe, enriching walks, we started
+              desensitizing him to a carrier bag. At first, he was hesitant —
+              strangers and the outdoors still scare him. But slowly, we’re
+              building up his comfort so one day, he can safely visit parks or
+              go for gentle walks in the winter sun. It’s a work in progress —
+              but we’re in no rush. Every step is worth celebrating.
+            </div>
+          </div>
+          <div class="journey-card-image">
+            <img
+              src="assests/images/travel.jpg"
+              alt="Keshav's First Outdoor Adventure"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!----------------------FEATHERED WORLD SECTION----------------------------------->
+
+    <section id="feathered-world" class="feathered-world-section">
+      <h2 class="feathered-world-title fade-in">
+        Meet My Feathered World <i class="fab fa-instagram"></i>
+      </h2>
+      <p class="feathered-world-subtitle fade-in">
+        Feathered Friends Who Teach, Entertain, and Uplift Parrots and People
+        Alike
+      </p>
+      <div class="feathered-world-grid">
+        <!-- Card 1 -->
+        <a
+          class="feathered-card"
+          href="https://www.instagram.com/keshavzinzuwadia22?igsh=MXNxcmxkanZtZWd1dA=="
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="feathered-img">
+            <img src="assests/images/keshav-profile.jpg" alt="Bird 1 Name" />
+          </div>
+          <div class="feathered-name fade-in fading">Keshav</div>
+          <div class="feathered-role fade-in fading">
+            Orange-winged<br />Amazon
+          </div>
+        </a>
+        <!-- Card 2 -->
+        <a
+          class="feathered-card"
+          href="https://www.instagram.com/ama.zing.zons?igsh=czBzazQ2Nm11dWdo"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="feathered-img">
+            <img src="assests/images/bird2.jpg" alt="Winnie, Marnie and Mij" />
+          </div>
+          <div class="feathered-name fade-in fading">
+            Winnie, Marnie and Mij
+          </div>
+          <div class="feathered-role fade-in fading">Amazon Parrots</div>
+        </a>
+        <!-- Card 3 -->
+        <a
+          class="feathered-card"
+          href="https://www.instagram.com/wongyeahs_log?igsh=MW1laGIwbHVjbnBlaQ=="
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="feathered-img">
+            <img src="assests/images/bird3.jpg" alt="Wongyeah" />
+          </div>
+          <div class="feathered-name fade-in fading">Wongyeah's log</div>
+          <div class="feathered-role fade-in fading">
+            Orange-winged<br />
+            Amazon
+          </div>
+        </a>
+        <!-- Card 4 -->
+        <a
+          class="feathered-card"
+          href="https://www.instagram.com/shelley_amazonparrot?igsh=YXFrazJtZzB6djh4"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="feathered-img">
+            <img src="assests/images/bird4.jpg" alt="Shelley" />
+          </div>
+          <div class="feathered-name fade-in fading">Shelley</div>
+          <div class="feathered-role fade-in fading">
+            Orange-winged<br />
+            Amazon
+          </div>
+        </a>
+        <!-- Card 5 -->
+        <a
+          class="feathered-card"
+          href="https://www.instagram.com/freeflying_kiwi?igsh=MWcxdzlpb3k3eHZ3Yw=="
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="feathered-img">
+            <img src="assests/images/bird5.jpg" alt="Kiwi" />
+          </div>
+          <div class="feathered-name fade-in fading">Kiwi</div>
+          <div class="feathered-role fade-in fading">Illigers Macaw</div>
+        </a>
+        <!-- Card 6 -->
+        <a
+          class="feathered-card"
+          href="https://www.instagram.com/bpluscockatoomom?igsh=YWkwYzl6cDlmc2Iw"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="feathered-img">
+            <img src="assests/images/bird6.jpg" alt="Paisley" />
+          </div>
+          <div class="feathered-name fade-in fading">Paisley</div>
+          <div class="feathered-role fade-in fading">BlueThroat Macaw</div>
+        </a>
+        <!-- Card 7 -->
+        <a
+          class="feathered-card"
+          href="https://www.instagram.com/astrosha_parrot?igsh=MXVvNmZ2ZHRsenN0dQ=="
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="feathered-img">
+            <img src="assests/images/bird7.jpg" alt="Astroshine" />
+          </div>
+          <div class="feathered-name fade-in fading">Astrosha</div>
+          <div class="feathered-role fade-in fading">
+            Orange-winged<br />
+            Amazon
+          </div>
+        </a>
+        <!-- Card 8 -->
+        <a
+          class="feathered-card"
+          href="https://www.instagram.com/manius_carlos?igsh=cjBpanF1YWxmcTNk"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="feathered-img">
+            <img src="assests/images/bird8.jpg" alt="Manius Carlos" />
+          </div>
+          <div class="feathered-name fade-in fading">Manius and Carlos</div>
+          <div class="feathered-role fade-in fading">
+            Orange-winged<br />
+            Amazon
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      &copy; 2025 KeshavTheBird &middot; Made with
+      <span style="color: #da856c">&#10084;</span> for parrot lovers
+    </footer>
+    <script src="assests/js/homepage.js"></script>
+  </body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sign Up - KeshavTheBird</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Quicksand:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assests/css/homepage.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      body {
+        background: var(--colors-green-light, #ebf1ee);
+        min-height: 100vh;
+        margin: 0;
+        font-family: "Poppins", "Quicksand", Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .signup-container {
+        background: #fff;
+        border-radius: 28px;
+        box-shadow: 0 4px 24px 0 rgba(60, 60, 60, 0.08);
+        padding: 48px 38px 38px 38px;
+        max-width: 370px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .signup-logo {
+        width: 130px;
+        margin-bottom: 1.2em;
+      }
+      .signup-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--colors-green-darkest, #234334);
+        margin-bottom: 0.5em;
+        font-family: "Poppins", Arial, sans-serif;
+        text-align: center;
+      }
+      .signup-desc {
+        color: #6c9b82;
+        font-size: 1.05em;
+        margin-bottom: 2em;
+        text-align: center;
+        font-family: "Quicksand", Arial, sans-serif;
+      }
+      .signup-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2em;
+      }
+      .signup-field {
+        display: flex;
+        align-items: center;
+        background: #eef3f1;
+        border-radius: 12px;
+        padding: 0.8em 1em;
+        font-size: 1em;
+        border: 1.5px solid #d1d5d8;
+        transition: border 0.18s;
+      }
+      .signup-field:focus-within {
+        border-color: var(--colors-green, #6c9b82);
+      }
+      .signup-field i {
+        color: var(--colors-green, #6c9b82);
+        margin-right: 0.7em;
+        font-size: 1.1em;
+      }
+      .signup-field input {
+        border: none;
+        background: transparent;
+        outline: none;
+        font-size: 1em;
+        width: 100%;
+        font-family: "Quicksand", Arial, sans-serif;
+        color: #234334;
+      }
+      .signup-btn-main {
+        background: var(--colors-green-darkest, #234334);
+        color: #fff;
+        border: none;
+        border-radius: 999px;
+        padding: 13px 0;
+        font-size: 1.13em;
+        font-weight: 700;
+        font-family: "Quicksand", Arial, sans-serif;
+        cursor: pointer;
+        margin-top: 0.5em;
+        transition: transform 0.15s, background 0.18s;
+        box-shadow: 0 2px 12px 0 rgba(60, 60, 60, 0.06);
+      }
+      .signup-btn-main:hover {
+        transform: scale(0.96);
+        background: #1a2e23;
+      }
+      .signup-links {
+        margin-top: 1.5em;
+        text-align: center;
+        font-size: 0.97em;
+        color: #6c9b82;
+      }
+      .signup-links a {
+        color: var(--colors-green-darkest, #234334);
+        text-decoration: none;
+        font-weight: 700;
+        margin-left: 0.4em;
+        transition: color 0.18s;
+      }
+      .signup-links a:hover {
+        color: var(--colors-green, #6c9b82);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup-container">
+      <img
+        src="assests/images/KeshavTheBird.png"
+        alt="Logo"
+        class="signup-logo"
+      />
+      <div class="signup-title">Create Your Account</div>
+      <div class="signup-desc">
+        Join the flock and start your feathery adventure!
+      </div>
+      <form class="signup-form">
+        <div class="signup-field">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Full Name" required />
+        </div>
+        <div class="signup-field">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="Email" required />
+        </div>
+        <div class="signup-field">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password" required />
+        </div>
+        <button class="signup-btn-main" type="submit">Sign Up</button>
+      </form>
+      <div class="signup-links">
+        Already have an account?
+        <a href="login.html">Log In</a>
+      </div>
+    </div>
+    <script>
+      document.querySelector(".signup-form").onsubmit = async function (e) {
+        e.preventDefault();
+        const username = this.querySelector('input[type="text"]').value;
+        const email = this.querySelector('input[type="email"]').value;
+        const password = this.querySelector('input[type="password"]').value;
+        const res = await fetch("http://localhost:5000/api/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, email, password }),
+        });
+        const data = await res.json();
+        if (res.ok) {
+          localStorage.setItem("user", JSON.stringify({ email }));
+          window.location.href = "index.html";
+        } else {
+          alert(data.error || "Signup failed");
+        }
+      };
+    </script>
+  </body>
+</html>

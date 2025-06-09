@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Log In - KeshavTheBird</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Quicksand:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assests/css/homepage.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      body {
+        background: var(--colors-green-light, #ebf1ee);
+        min-height: 100vh;
+        margin: 0;
+        font-family: "Poppins", "Quicksand", Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .login-container {
+        background: #fff;
+        border-radius: 28px;
+        box-shadow: 0 4px 24px 0 rgba(60, 60, 60, 0.08);
+        padding: 48px 38px 38px 38px;
+        max-width: 370px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .login-logo {
+        width: 130px;
+        margin-bottom: 1.2em;
+      }
+      .login-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--colors-green-darkest, #234334);
+        margin-bottom: 0.5em;
+        font-family: "Poppins", Arial, sans-serif;
+        text-align: center;
+      }
+      .login-desc {
+        color: #6c9b82;
+        font-size: 1.05em;
+        margin-bottom: 2em;
+        text-align: center;
+        font-family: "Quicksand", Arial, sans-serif;
+      }
+      .login-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2em;
+      }
+      .login-field {
+        display: flex;
+        align-items: center;
+        background: #eef3f1;
+        border-radius: 12px;
+        padding: 0.8em 1em;
+        font-size: 1em;
+        border: 1.5px solid #d1d5d8;
+        transition: border 0.18s;
+      }
+      .login-field:focus-within {
+        border-color: var(--colors-green, #6c9b82);
+      }
+      .login-field i {
+        color: var(--colors-green, #6c9b82);
+        margin-right: 0.7em;
+        font-size: 1.1em;
+      }
+      .login-field input {
+        border: none;
+        background: transparent;
+        outline: none;
+        font-size: 1em;
+        width: 100%;
+        font-family: "Quicksand", Arial, sans-serif;
+        color: #234334;
+      }
+      .login-btn-main {
+        background: var(--colors-green-darkest, #234334);
+        color: #fff;
+        border: none;
+        border-radius: 999px;
+        padding: 13px 0;
+        font-size: 1.13em;
+        font-weight: 700;
+        font-family: "Quicksand", Arial, sans-serif;
+        cursor: pointer;
+        margin-top: 0.5em;
+        transition: transform 0.15s, background 0.18s;
+        box-shadow: 0 2px 12px 0 rgba(60, 60, 60, 0.06);
+      }
+      .login-btn-main:hover {
+        transform: scale(0.96);
+        background: #1a2e23;
+      }
+      .login-links {
+        margin-top: 1.5em;
+        text-align: center;
+        font-size: 0.97em;
+        color: #6c9b82;
+      }
+      .login-links a {
+        color: var(--colors-green-darkest, #234334);
+        text-decoration: none;
+        font-weight: 700;
+        margin-left: 0.4em;
+        transition: color 0.18s;
+      }
+      .login-links a:hover {
+        color: var(--colors-green, #6c9b82);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <img
+        src="assests/images/KeshavTheBird.png"
+        alt="Logo"
+        class="login-logo"
+      />
+      <div class="login-title">Welcome Back</div>
+      <div class="login-desc">Log in to continue your feathery journey!</div>
+      <form class="login-form">
+        <div class="login-field">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="Email" required />
+        </div>
+        <div class="login-field">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password" required />
+        </div>
+        <button class="login-btn-main" type="submit">Log In</button>
+      </form>
+      <div class="login-links">
+        Don't have an account?
+        <a href="signup.html">Sign Up</a>
+      </div>
+    </div>
+    <script>
+      document.querySelector(".login-form").onsubmit = async function (e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        const password = this.querySelector('input[type="password"]').value;
+        const res = await fetch("http://localhost:5000/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        });
+        const data = await res.json();
+        if (res.ok) {
+          localStorage.setItem(
+            "user",
+            JSON.stringify({ username: data.username, email: data.email })
+          );
+          window.location.href = "index.html";
+        } else {
+          alert(data.error || "Login failed");
+        }
+      };
+    </script>
+  </body>
+</html>
