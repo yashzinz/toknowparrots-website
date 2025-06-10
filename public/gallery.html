@@ -157,7 +157,7 @@
         reader.onload = async function (event) {
           const imageUrl = event.target.result;
 
-          const res = await fetch("http://localhost:5000/api/parrots", {
+          const res = await fetch("/api/parrots", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
