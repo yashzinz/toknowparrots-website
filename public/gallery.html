@@ -184,7 +184,7 @@
         // Clear existing cards
         galleryGrid.innerHTML = "";
 
-        const res = await fetch("http://localhost:5000/api/parrots");
+        const res = await fetch("/api/parrots");
         const parrots = await res.json();
 
         parrots.forEach((parrot) => {
